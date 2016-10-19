@@ -134,7 +134,7 @@ __[mobile backendとFCMの連携に必要な設定](http://mb.cloud.nifty.com/do
   * `タイトル`, `メッセージ`を追記
   * `今すぐ配信`をそのまま
 
-![画像15](/readme-img/Push1.png)
+![画像15](/readme-img/push1.png)
 
 * フォームの下に移動します
   * `Android端末に配信する`と選択します
@@ -145,7 +145,7 @@ __[mobile backendとFCMの連携に必要な設定](http://mb.cloud.nifty.com/do
 * 配信対象が`1端末に向けて送信されます`と表示していることを確認します。
 * `プッシュ通知を作成する`と選択し、プッシュ通知を登録します。
 
-![画像16](/readme-img/Push2.png)
+![画像16](/readme-img/push2.png)
 
 * Android端末からプッシュ通知を確認しましょう！
 * 少し待つとプッシュ通知が届きます！
