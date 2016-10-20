@@ -57,7 +57,7 @@ __[mobile backendとFCMの連携に必要な設定](http://mb.cloud.nifty.com/do
 
 * アプリ設定開いてプッシュ通知の設定をします
    * 「プッシュ通知の許可」で「許可する」選択、「保存する」をクリックします
-   * 「Androidプッシュ通知」の「APIキー」には、FCMでプロジェクト作成時に発行された「Sender ID」を記入し、「保存する」をクリックします
+   * 「Androidプッシュ通知」の「APIキー」には、FCMでプロジェクト作成時に発行された「サーバーキー」を記入し、「保存する」をクリックします
 
 ![画像6](/readme-img/mBassPushEnv.png)
 
@@ -122,6 +122,8 @@ __[mobile backendとFCMの連携に必要な設定](http://mb.cloud.nifty.com/do
 ![画像13](/readme-img/Action3.png)
 
 * カスタム端末情報`Prefectures`も登録します。入力で`Tokyo`を入れてください。
+* 「SAVE」ボタンをクリックします。
+* データストア(installationクラス(端末情報))からchannels = ["A"]、Prefectures = Tokyo の登録値を確認出来ます。
 
 ![画像14](/readme-img/Action4.png)
 
@@ -221,7 +223,7 @@ installation.saveInBackground(new DoneCallback() {
     public void done(NCMBException e) {
         if (e != null) {
             //保存失敗
-            Toast.makeText(MainActivity.this, "端末情報を保存成功しました。" + e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "端末情報を保存失敗しました。" + e.getMessage(), Toast.LENGTH_LONG).show();
         } else {
             //保存成功
             Toast.makeText(MainActivity.this, "端末情報を保存成功しました。", Toast.LENGTH_LONG).show();

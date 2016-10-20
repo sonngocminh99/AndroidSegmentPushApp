@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                     public void done(NCMBException e) {
                         if (e != null) {
                             //保存失敗
-                            Toast.makeText(MainActivity.this, "端末情報を保存成功しました。" + e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, "端末情報を保存失敗しました。" + e.getMessage(), Toast.LENGTH_LONG).show();
                         } else {
                             //保存成功
                             Toast.makeText(MainActivity.this, "端末情報を保存成功しました。", Toast.LENGTH_LONG).show();
