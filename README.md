@@ -117,7 +117,7 @@ __[mobile backendとFCMの連携に必要な設定](http://mb.cloud.nifty.com/do
 ![画像12](/readme-img/Action2.png)
 
 * 次に絞り込み条件を指定するために、端末情報を登録します。
-* Channels情報を登録しましょう！アプリのチャネルを「A」に選択してください。
+* Channels情報を登録しましょう！アプリのチャネルを「A」に設定してください。
 
 ![画像13](/readme-img/Action3.png)
 
