@@ -36,7 +36,7 @@
  * 認証に必要なプッシュ通知のAPIキーおよびSenderIDは手順にて説明します。
 
 ## 手順
-### 0.プッシュ通知機能使うための準備
+### 0.プッシュ通知機能を使うための準備
 
 ニフティクラウド mobile backendと連携させるためのAPIキーを取得する必要があります。 以下のドキュメントを参考に、FCMプロジェクトの作成とAPIキーの取得を行ってください。
 
@@ -117,7 +117,7 @@ __[mobile backendとFCMの連携に必要な設定](http://mb.cloud.nifty.com/do
 ![画像12](/readme-img/Action2.png)
 
 * 次に絞り込み条件を指定するために、端末情報を登録します。
-* Channels情報を登録しましょう！アプリのチャネルを「A」を選択してください。
+* Channels情報を登録しましょう！アプリのチャネルを「A」に選択してください。
 
 ![画像13](/readme-img/Action3.png)
 
@@ -167,7 +167,7 @@ __[mobile backendとFCMの連携に必要な設定](http://mb.cloud.nifty.com/do
 #### ロジック
  * `activity_main.xml`でデザインを作成し、`MainActivity.java`にロジックを書いています
  * installationクラス(端末情報)が保存される処理は以下のように記述されます
- * アプリが再インストールされる時に、端末のデバイストークンが重複場合の処理も考慮した実装となっています。
+ * アプリを再インストールした時に、端末のデバイストークンが重複した場合の処理を考慮した実装となっています。
 
 ```java
 //**************** APIキーの設定とSDKの初期化 **********************
@@ -193,13 +193,13 @@ __[mobile backendとFCMの連携に必要な設定](http://mb.cloud.nifty.com/do
                                updateInstallation(installation);
                            } else {
                                //保存失敗 : その他エラーが発生
-                               Toast.makeText(MainActivity.this, "端末情報を登録失敗しました。" + e1.getMessage(), Toast.LENGTH_LONG).show();
+                               Toast.makeText(MainActivity.this, "端末情報の登録に失敗しました。" + e1.getMessage(), Toast.LENGTH_LONG).show();
                            }
                        }
                    });
                } else {
                    //ID取得失敗
-                   Toast.makeText(MainActivity.this, "端末のデバイストークンを取得失敗しました。", Toast.LENGTH_LONG).show();
+                   Toast.makeText(MainActivity.this, "端末のデバイストークンの取得に失敗しました。", Toast.LENGTH_LONG).show();
                }
            }
        });
@@ -223,10 +223,10 @@ installation.saveInBackground(new DoneCallback() {
     public void done(NCMBException e) {
         if (e != null) {
             //保存失敗
-            Toast.makeText(MainActivity.this, "端末情報を保存失敗しました。" + e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "端末情報の保存に失敗しました。" + e.getMessage(), Toast.LENGTH_LONG).show();
         } else {
             //保存成功
-            Toast.makeText(MainActivity.this, "端末情報を保存成功しました。", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "端末情報の保存に成功しました。", Toast.LENGTH_LONG).show();
         }
     }
 });

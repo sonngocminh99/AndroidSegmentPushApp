@@ -93,13 +93,13 @@ public class MainActivity extends AppCompatActivity {
                                 updateInstallation(installation);
                             } else {
                                 //保存失敗 : その他エラーが発生
-                                Toast.makeText(MainActivity.this, "端末情報を登録失敗しました。" + e1.getMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(MainActivity.this, "端末情報の登録に失敗しました。" + e1.getMessage(), Toast.LENGTH_LONG).show();
                             }
                         }
                     });
                 } else {
                     //ID取得失敗
-                    Toast.makeText(MainActivity.this, "端末のデバイストークンを取得失敗しました。", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "端末のデバイストークンの取得に失敗しました。", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -123,10 +123,10 @@ public class MainActivity extends AppCompatActivity {
                     public void done(NCMBException e) {
                         if (e != null) {
                             //保存失敗
-                            Toast.makeText(MainActivity.this, "端末情報を保存失敗しました。" + e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, "端末情報の保存に失敗しました。" + e.getMessage(), Toast.LENGTH_LONG).show();
                         } else {
                             //保存成功
-                            Toast.makeText(MainActivity.this, "端末情報を保存成功しました。", Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, "端末情報の保存に成功しました。", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
