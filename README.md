@@ -97,6 +97,9 @@ __[mobile backendとFCMの連携に必要な設定](http://mb.cloud.nifty.com/do
 
 ### 6. 動作確認
 
+* AndroidStudioからビルドする。
+ * 「プロジェクト場所」\app\build\outputs\apk\ ***.apk ファイルが生成される
+
 * インストールしたアプリを起動します
  * プッシュ通知の許可を求めるアラートが出たら、必ず許可してください！
 
