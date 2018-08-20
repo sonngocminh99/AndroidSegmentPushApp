@@ -4,14 +4,14 @@
 ![画像1](/readme-img/001.png)
 
 ## 概要
-* [ニフクラ mobile backend](http://mb.cloud.nifty.com/)の『プッシュ通知』機能とプッシュ通知を受信する際、プッシュ通知の『端末の絞り込み配信』機能を実装したサンプルプロジェクトです
-* 簡単な操作ですぐに [ニフクラ mobile backend](http://mb.cloud.nifty.com/)の機能を体験いただけます★☆
+* [ニフクラ mobile backend](https://mbaas.nifcloud.com/)の『プッシュ通知』機能とプッシュ通知を受信する際、プッシュ通知の『端末の絞り込み配信』機能を実装したサンプルプロジェクトです
+* 簡単な操作ですぐに [ニフクラ mobile backend](https://mbaas.nifcloud.com/)の機能を体験いただけます★☆
 * このサンプルはAndroid 4.0以降に対応しています
 
 ## ニフクラ mobile backendって何？？
 スマートフォンアプリのバックエンド機能（プッシュ通知・データストア・会員管理・ファイルストア・SNS連携・位置情報検索・スクリプト）が**開発不要**、しかも基本**無料**(注1)で使えるクラウドサービス！
 
-詳しくは[こちら](http://mb.cloud.nifty.com/price.htm)をご覧ください
+詳しくは[こちら](https://mbaas.nifcloud.com/price.htm)をご覧ください
 
 ![画像2](/readme-img/002.png)
 
@@ -40,9 +40,9 @@
 
 ニフクラ  mobile backendと連携させるためのAPIキーを取得する必要があります。 以下のドキュメントを参考に、FCMプロジェクトの作成とAPIキーの取得を行ってください。
 
-__[mobile backendとFCMの連携に必要な設定](http://mb.cloud.nifty.com/doc/current/tutorial/push_setup_android.html)__
+__[mobile backendとFCMの連携に必要な設定](https://mbaas.nifcloud.com/doc/current/tutorial/push_setup_android.html)__
 
-### 1. [ニフクラ mobile backend](http://mb.cloud.nifty.com/)の準備
+### 1. [ニフクラ mobile backend](https://mbaas.nifcloud.com/)の準備
 
 * 上記リンクから会員登録（無料）をします
 * 登録後、ログインをすると下図のように「アプリの新規作成」画面が出ますので、アプリを作成します
@@ -79,7 +79,7 @@ __[mobile backendとFCMの連携に必要な設定](http://mb.cloud.nifty.com/do
 ### 4. APIキーの設定
 
 * `MainActivity.java`を編集します
-* 先程[ニフクラ mobile backend](http://mb.cloud.nifty.com/)のダッシュボード上で確認したAPIキーを貼り付けます
+* 先程[ニフクラ mobile backend](https://mbaas.nifcloud.com/)のダッシュボード上で確認したAPIキーを貼り付けます
 
 ![画像9](/readme-img/AndroidAPIkey.png)
 
@@ -115,7 +115,7 @@ __[mobile backendとFCMの連携に必要な設定](http://mb.cloud.nifty.com/do
    - `createDate`: 作成時
    - `updateDate`: アプリが起動時
 
-* [ニフクラ mobile backend](http://mb.cloud.nifty.com/)のダッシュボードから「データストア (installationクラス(端末情報))」を確認してみましょう！
+* [ニフクラ mobile backend](https://mbaas.nifcloud.com/)のダッシュボードから「データストア (installationクラス(端末情報))」を確認してみましょう！
 
 ![画像12](/readme-img/Action2.png)
 
@@ -165,7 +165,7 @@ __[mobile backendとFCMの連携に必要な設定](http://mb.cloud.nifty.com/do
 サンプルプロジェクトに実装済みの内容のご紹介
 
 #### SDKのインポートと初期設定
-* ニフクラ mobile backend の[ドキュメント（クイックスタート）](http://mb.cloud.nifty.com/doc/current/introduction/quickstart_android.html#/Android/)をご用意していますので、ご活用ください
+* ニフクラ mobile backend の[ドキュメント（クイックスタート）](https://mbaas.nifcloud.com/doc/current/introduction/quickstart_android.html#/Android/)をご用意していますので、ご活用ください
 
 #### ロジック
  * `activity_main.xml`でデザインを作成し、`MainActivity.java`にロジックを書いています
@@ -237,4 +237,4 @@ installation.saveInBackground(new DoneCallback() {
 
 
 ## 参考
-* ニフクラ mobile backend の[ドキュメント（プッシュ通知（Android））](http://mb.cloud.nifty.com/doc/current/push/basic_usage_android.html)をご用意していますので、ご活用ください
+* ニフクラ mobile backend の[ドキュメント（プッシュ通知（Android））](https://mbaas.nifcloud.com/doc/current/push/basic_usage_android.html)をご用意していますので、ご活用ください
