@@ -178,35 +178,6 @@ __[mobile backendとFCMの連携に必要な設定](https://mbaas.nifcloud.com/d
 
        final NCMBInstallation installation = NCMBInstallation.getCurrentInstallation();
 
-       //GCMからRegistrationIdを取得しinstallationに設定する
-       installation.getRegistrationIdInBackground("ANDROID_SENDER_ID", new DoneCallback() {
-           @Override
-           public void done(NCMBException e) {
-               if (e == null) {
-                   installation.saveInBackground(new DoneCallback() {
-                       @Override
-                       public void done(NCMBException e1) {
-                           if (e1 == null) {
-
-                               //表示する端末情報のデータを反映
-                               ***省略***
-
-                           } else if (NCMBException.DUPLICATE_VALUE.equals(e1.getCode())) {
-                               //保存失敗 : registrationID重複の場合に実行
-                               updateInstallation(installation);
-                           } else {
-                               //保存失敗 : その他エラーが発生
-                               Toast.makeText(MainActivity.this, "端末情報の登録に失敗しました。" + e1.getMessage(), Toast.LENGTH_LONG).show();
-                           }
-                       }
-                   });
-               } else {
-                   //ID取得失敗
-                   Toast.makeText(MainActivity.this, "端末のデバイストークンの取得に失敗しました。", Toast.LENGTH_LONG).show();
-               }
-           }
-       });
-
 ```
 
 * 端末情報を登録するための実装は以下となっています。
