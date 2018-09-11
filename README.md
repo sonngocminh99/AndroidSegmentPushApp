@@ -191,7 +191,11 @@ String item = (String) _channels.getSelectedItem();
 JSONArray tmpArray = new JSONArray();
 tmpArray.put(item);
 installation.setChannels(tmpArray);
-installation.put("Prefectures", prefectures);
+try {
+    installation.put("Prefectures", prefectures);
+} catch (NCMBException e) {
+    e.printStackTrace();
+}
 installation.saveInBackground(new DoneCallback() {
     @Override
     public void done(NCMBException e) {
