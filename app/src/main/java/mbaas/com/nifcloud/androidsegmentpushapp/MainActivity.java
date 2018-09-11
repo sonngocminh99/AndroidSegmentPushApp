@@ -10,14 +10,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nifcloud.mbaas.core.DoneCallback;
+import com.nifcloud.mbaas.core.FindCallback;
 import com.nifcloud.mbaas.core.NCMB;
 import com.nifcloud.mbaas.core.NCMBException;
 import com.nifcloud.mbaas.core.NCMBInstallation;
+import com.nifcloud.mbaas.core.NCMBQuery;
+import com.nifcloud.mbaas.core.TokenCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.Arrays;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
     TextView _createdate;
     TextView _updatedate;
     EditText _txtPrefectures;
+    String deviceTokenSearch = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         //**************** APIキーの設定とSDKの初期化 **********************
         NCMB.initialize(this.getApplicationContext(), "YOUR_APPLICATION_KEY", "YOUR_CLIENT_KEY");
@@ -55,31 +59,50 @@ public class MainActivity extends AppCompatActivity {
         _updatedate = (TextView) findViewById(R.id.txtUpdatedate);
         _txtPrefectures = (EditText) findViewById(R.id.txtPrefecture);
 
-        //表示する端末情報を指定
-        _objectId.setText(installation.getObjectId());
-        _appversion.setText(installation.getAppVersion());
-        try {
-            if (installation.getChannels() != null) {
-                String selectChannel = installation.getChannels().get(0).toString();
-                String[] channelArray = new String[]{"A", "B", "C", "D"};
-                Integer selectId = Arrays.asList(channelArray).indexOf(selectChannel);
-                _channels.setSelection(selectId);
+        installation.getDeviceTokenInBackground(new TokenCallback() {
+            @Override
+            public void done(String s, NCMBException e) {
+                if (e == null) {
+
+                    NCMBQuery<NCMBInstallation> query = NCMBInstallation.getQuery();
+                    deviceTokenSearch = s;
+                    query.whereEqualTo("deviceToken", deviceTokenSearch);
+                    query.findInBackground(new FindCallback<NCMBInstallation>() {
+                        @Override
+                        public void done(List<NCMBInstallation> list, NCMBException e) {
+                            NCMBInstallation ncmbInstallation = list.get(0);
+                            //表示する端末情報を指定
+                            _objectId.setText(ncmbInstallation.getObjectId());
+                            _appversion.setText(ncmbInstallation.getAppVersion());
+                            try {
+                                if (ncmbInstallation.getChannels() != null) {
+                                    String selectChannel = ncmbInstallation.getChannels().get(0).toString();
+                                    String[] channelArray = new String[]{"A", "B", "C", "D"};
+                                    Integer selectId = Arrays.asList(channelArray).indexOf(selectChannel);
+                                    _channels.setSelection(selectId);
+                                }
+                            } catch (JSONException e2) {
+                                e2.printStackTrace();
+                            }
+                            _devicetoken.setText(deviceTokenSearch);
+                            _sdkversion.setText(ncmbInstallation.getSDKVersion());
+                            _timezone.setText(ncmbInstallation.getTimeZone());
+                            try {
+                                _createdate.setText(ncmbInstallation.getCreateDate().toString());
+                                _updatedate.setText(ncmbInstallation.getUpdateDate().toString());
+                            } catch (NCMBException e1) {
+                                e1.printStackTrace();
+                            }
+                            if (ncmbInstallation.getString("Prefectures") != null) {
+                                _txtPrefectures.setText(ncmbInstallation.getString("Prefectures"));
+                            }
+                        }
+                    });
+
+                }
             }
-        } catch (JSONException e2) {
-            e2.printStackTrace();
-        }
-        _devicetoken.setText(installation.getDeviceToken());
-        _sdkversion.setText(installation.getSDKVersion());
-        _timezone.setText(installation.getTimeZone());
-        try {
-            _createdate.setText(installation.getCreateDate().toString());
-            _updatedate.setText(installation.getUpdateDate().toString());
-        } catch (NCMBException e) {
-            e.printStackTrace();
-        }
-        if (installation.getString("Prefectures") != null) {
-            _txtPrefectures.setText(installation.getString("Prefectures"));
-        }
+        });
+
 
         Button _btnSave = (Button) findViewById(R.id.btnSave);
         _btnSave.setOnClickListener(new View.OnClickListener() {
