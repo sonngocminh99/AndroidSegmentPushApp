@@ -55,10 +55,6 @@
  https://mbaas.nifcloud.com/doc/current/common/push_setup_fcm_json.html  
  ※ [手順5.google-services.jsonの配置](https://github.com/NIFCloud-mbaas/AndroidSegmentPushApp#5-google-servicesjsonの配置) もご参考ください。  
 
-FCM対応したプッシュ通知を送信する場合、google-services.jsonをアプリに配置してただくのと、Firebaseの秘密鍵をmobile backendにアップロードしていただく必要があります。以下のドキュメントを参考に、google-services.jsonとFirebase秘密鍵の設定を行ってください。
-
-__[google-services.jsonとFirebase秘密鍵の設定方法について](https://mbaas.nifcloud.com/doc/current/common/push_setup_fcm_json.html)__
-
 ### 1. [ニフクラ mobile backend](https://mbaas.nifcloud.com/signup.htm)の準備
 
 * 上記リンクから会員登録（無料）をします
