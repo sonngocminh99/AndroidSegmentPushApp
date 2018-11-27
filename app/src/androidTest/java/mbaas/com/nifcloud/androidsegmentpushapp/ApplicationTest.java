@@ -1,4 +1,4 @@
-package mbaas.com.nifty.androidsegmentpushapp;
+package mbaas.com.nifcloud.androidsegmentpushapp;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
