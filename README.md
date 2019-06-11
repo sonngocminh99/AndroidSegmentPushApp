@@ -17,9 +17,9 @@
 
 ## 動作環境
 
-* Android Studio ver. 3.1  
+* Android Studio ver. 3.4.1  
 * Android 6.0  
-* Android SDK v3  
+* Android SDK v3.0.2  
    * SDK v2系だと動作しないので注意  
 
 ※このサンプルアプリは、プッシュ通知を受信する必要があるため実機ビルドが必要です<br>  
@@ -187,7 +187,7 @@
 
 ```java
 //**************** APIキーの設定とSDKの初期化 **********************
-       NCMB.initialize(this, "YOUR_APPLICATION_KEY", "YOUR_CLIENT_KEY");
+       NCMB.initialize(this.getApplicationContext(), "YOUR_APPLICATION_KEY", "YOUR_CLIENT_KEY");
 
        final NCMBInstallation installation = NCMBInstallation.getCurrentInstallation();
 
