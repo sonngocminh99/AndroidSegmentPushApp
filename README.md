@@ -103,6 +103,7 @@
 * Firebaseから発行したgoogle-services.jsonをアプリに配置します  
 * なお、発行時にAndroidパッケージ名は"mbaas.com.nifcloud.androidsegmentpushapp"としてください  
    * パッケージ名を別名にした場合はアプリ配置後、google-services.jsonファイル内の"package_name"を"mbaas.com.nifcloud.androidsegmentpushapp"に変更してください  
+* AndroidSegmentPushApp/app 配下に配置してください。それ以外だとエラーになります   
 
 ![画像10](/readme-img/PlaceGoogleServiceFile.png)
 
