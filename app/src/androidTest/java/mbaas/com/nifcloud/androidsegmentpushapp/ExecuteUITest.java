@@ -10,6 +10,11 @@ import androidx.test.espresso.action.ViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
+import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.uiautomator.By;
+import androidx.test.uiautomator.UiDevice;
+import androidx.test.uiautomator.UiObject2;
+import androidx.test.uiautomator.Until;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -25,7 +30,10 @@ import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static mbaas.com.nifcloud.androidsegmentpushapp.Utils.NOTIFICATION_TEXT;
+import static mbaas.com.nifcloud.androidsegmentpushapp.Utils.NOTIFICATION_TITLE;
 import static org.hamcrest.CoreMatchers.not;
+import static org.junit.Assert.assertEquals;
 
 
 @RunWith(AndroidJUnit4.class)
@@ -44,6 +52,8 @@ public class ExecuteUITest {
     ViewInteraction btnSave;
 
     private View decorView;
+    private final static int TIMEOUT = 150000;
+    private UiDevice device;
 
     @Rule
     public ActivityScenarioRule<MainActivity> activityRule =
@@ -68,6 +78,7 @@ public class ExecuteUITest {
                 decorView = activity.getWindow().getDecorView();
             }
         });
+        device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
     }
 
     @Test
@@ -105,4 +116,17 @@ public class ExecuteUITest {
                 .check(matches(isDisplayed()));
     }
 
+    @Test
+    public void onSendNotification() throws InterruptedException {
+        Utils utils = new Utils();
+        utils.sendPushWithSearchCondition();
+        Thread.sleep(30000);
+        device.openNotification();
+        device.wait(Until.hasObject(By.text(NOTIFICATION_TITLE)), TIMEOUT);
+        UiObject2 title = device.findObject(By.text(NOTIFICATION_TITLE));
+        UiObject2 text = device.findObject(By.text(NOTIFICATION_TEXT));
+        assertEquals(NOTIFICATION_TITLE, title.getText());
+        assertEquals(NOTIFICATION_TEXT, text.getText());
+        title.click();
+    }
 }
